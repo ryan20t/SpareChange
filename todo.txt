@@ -1,0 +1,1 @@
+add function comments to javascript and eventually PhP

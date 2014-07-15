@@ -1,0 +1,88 @@
+/* 
+    Author     : ryan
+*/
+body {
+    background-color: darkseagreen;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+    forms and fieldsets global styles
+*/
+.fieldset {
+    border: none;
+    text-align: center;
+}
+
+/*
+    labels for input fields
+*/
+.formLabel {
+    padding: 1em;
+}
+
+input[type=text], input[type=password], input[type=submit] {
+    border: 5px solid beige;
+    border-radius: 5px;
+    text-align: center;
+    color: grey;
+    opacity: 50%;
+}
+
+select {
+    border: 5px solid beige;
+    text-align: center;
+}
+
+input[type=submit] {
+    background-color: white;
+    color: black;
+}
+
+/*
+    header bar
+*/
+.top {
+    width: 100%;
+    background-color: beige;
+    border-bottom: 8px solid chocolate;
+    position: fixed;
+    height: 4em;
+    clear: both;
+}
+
+.navItemRight {
+    float: right;
+    padding-right: 3em;
+    padding-top: 2em;
+}
+
+.navItemLeft {
+    float: left;
+    padding-left: 3em;
+    margin-top: 2em;
+}
+
+.navList {
+    float: right;
+    padding-right: 3em;
+    padding-top: 2em;
+}
+
+.navList li {
+    float: left;
+    padding-right: 1em;
+    display: inline-block;
+}
+
+.navList a {
+    text-decoration: none;
+}
+
+/*
+    text decoration etc
+*/
+.underline {
+    text-decoration: underline;
+}

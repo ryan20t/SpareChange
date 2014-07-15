@@ -1,0 +1,67 @@
+/* 
+    Author     : ryan
+*/
+/*
+    Income information
+*/
+.income {
+    padding-top: 8em;
+    padding-left: 3em;
+    height: 6em;
+}
+
+/*
+    Static bills information
+*/
+.staticBills {
+    background-color: seagreen;
+    padding-left: 3em;
+    padding-top: 3em;
+}
+
+.staticTable {
+    display: block;
+    padding-left: 1em;
+    padding-top: 1em;
+}
+
+.staticTable td {
+    padding: 5px;
+}
+
+/*
+    Budget bills information
+*/
+.budgetItems {
+    padding-left: 3em;
+    padding-top: 3em;
+}
+
+.budgetTable {
+    display: block;
+    padding-left: 1em;
+    padding-top: 1em;
+}
+
+.budgetTable td {
+    padding: 5px;
+}
+
+/*
+    Account Management
+*/
+.accountManagement {
+    background-color: seagreen;
+    padding-left: 3em;
+    padding-top: 3em;
+}
+
+.accountList {
+    display: block;
+    padding-left: 1em;
+    padding-top: 1em;
+}
+
+.accountList li {
+    padding: 3px;
+}

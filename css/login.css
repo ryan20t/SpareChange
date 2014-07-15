@@ -1,0 +1,19 @@
+/* 
+    Author     : ryan
+*/
+#signup {
+    display: none;
+}
+
+#signup, #login {
+    width: 20em;
+    margin: 0 auto;
+    padding-top: 15em;
+}
+
+/*
+    hides message
+*/
+#signupMessage {
+    display: none;
+}
