@@ -14,7 +14,11 @@
     Static bills information
 */
 .staticBills {
-    background-color: seagreen;
+    /*background-color: seagreen;*/
+    background: -webkit-linear-gradient(left, cornsilk , white, cornsilk); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, cornsilk, white, cornsilk); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, cornsilk, white, cornsilk); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, cornsilk , white, cornsilk); /* Standard syntax */
     padding-left: 3em;
     padding-top: 3em;
 }
@@ -48,10 +52,31 @@
 }
 
 /*
+    Goal Management
+*/
+.goalManagement {
+    padding-left: 3em;
+    padding-top: 3em;
+    background: -webkit-linear-gradient(left, cornsilk , white, cornsilk); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, cornsilk, white, cornsilk); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, cornsilk, white, cornsilk); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, cornsilk , white, cornsilk); /* Standard syntax */
+}
+
+.goalManagementTable {
+    display: block;
+    padding-left: 1em;
+    padding-top: 1em;
+}
+
+.goalManagementTable td {
+    padding: 5px;
+}
+
+/*
     Account Management
 */
 .accountManagement {
-    background-color: seagreen;
     padding-left: 3em;
     padding-top: 3em;
 }
@@ -64,4 +89,16 @@
 
 .accountList li {
     padding: 3px;
+}
+
+/*
+    budget manager
+*/
+.budgetManagerDiv {
+    height: 500px;
+    width: 500px;
+    background: -webkit-linear-gradient(left, beige , white, beige); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, beige, white, beige); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, beige, white, beige); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, beige , white, beige); /* Standard syntax */
 }

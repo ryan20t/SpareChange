@@ -16,7 +16,7 @@ daySelector.addClass('underline');
  */
 
 /*
- * transaction type
+ * transaction type (budget or note)
  */
 $('#budgetBox').on('click', function(e){
     if (budgetBox.checked) {
@@ -68,8 +68,23 @@ function SwitchToMonth(){
 var canvas = document.querySelector('.goalCanvas');
 var ctx = canvas.getContext('2d');
 var gradient = ctx.createLinearGradient(0,150,0,0);
-gradient.addColorStop(0, "red");
-gradient.addColorStop(.35, "yellow");
-gradient.addColorStop(.9, "green");
+gradient.addColorStop(0, "firebrick");
+gradient.addColorStop(.35, "gold");
+gradient.addColorStop(.9, "limegreen");
 ctx.fillStyle = gradient;
 ctx.fillRect(0,37.5,300,150);/*the second number gets bigger, it fills less (up to 150). use percentage and do math.*/
+
+/*
+ * placeholder script
+ */
+$('.noteInput').on('focus', function(e){
+    InputClear('noteInput');
+}).on('blur', function(e){
+    InputReset('noteInput', 'note');
+});
+
+$('.amount').on('focus', function(e){
+    InputClear('amount');
+}).on('blur', function(e){
+    InputReset('amount', '$');
+});

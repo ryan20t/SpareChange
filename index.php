@@ -8,19 +8,20 @@
         <meta charset="UTF-8">
         <link href="css/global.css" type="text/css" rel="stylesheet">
         <link href="css/index.css" type="text/css" rel="stylesheet">
-        <link href="css/reset.css" type="text/css" rel="stylesheet">
+        <link href="css/reset.css" type="text/css" rel="stylesheet">   
         <title>Spare Change Dashboard</title>
     </head>
     <body>
         <?php
         // put your code here
+        
         ?>
         
         <!--
             header bar
         -->
         <center class="top">
-            <p class="navItemLeft">Spare Change</p>
+            <img class="logoLeft" src="img/smpink.png" alt="" />
             <ul class="navList">
                 <li>Hello, (username)</li>
                 <li>|</li>
@@ -41,7 +42,7 @@
             <form name="newEntry" method="post" action="#">
                 <input type="text" name="date" id="date" value="" placeholder="date"/>
                 
-                <input type="text" name="amount" id="amount" placeholder="$" />
+                <input class="amount" type="text" name="amount" id="amount" placeholder="$" />
                 
                 <div class="category">
                 <select>
@@ -53,7 +54,7 @@
                 </div>
                 
                 <div class="note">
-                <input type="text" name="note" id="note" placeholder="note" />
+                <input class="noteInput" type="text" name="note" id="note" placeholder="note" />
                 </div>
                 
                 &nbsp;&nbsp;&nbsp;
@@ -72,31 +73,28 @@
         or month
     -->
     
-    <div class="goalTrackerDiv">
-        <p class="goalHeader">(goal name)</p>  
-        <canvas class="goalCanvas"></canvas>
-        <p class="goalFooter">75%</p>
-    </div>
-    
-    
     <div class="transactionView">
         <div class="transViewHeader">
-            <select class="rangeSelector"><option>Current</option></select>
-            <ul class="dayMonth">
-                <li><p id="daySelector">Day</p></li>
-                <li>|</li>
-                <li><p id="monthSelector">Month</p></li>
-            </ul>
+            (current date, ex: Monday, July 7 2014)
         </div>
         <br />
         
-        
+        <div class="goalTrackerDiv">
+            <p class="goalHeader">(goal name)</p>  
+            <canvas class="goalCanvas"></canvas>
+            <p class="goalFooter">75%</p>
+        </div>
+    
         <!--
             output by day
-        -->
-        <br />
+        
+        <br />-->
         <div class="dayView">
         <table class="dayTable">
+            <tr>
+                <th class="underline">Amount</th>
+                <th class="underline">Note/Category</th>
+            </tr>
             <tr>
                 <td>$8.00</td>
                 <td>Subway</td>
@@ -118,68 +116,23 @@
                 <td>Dunkin' Donuts</td>
             </tr>
         </table>
-            
-            <div class="daySummary">
-                <p>Monday, July 7th 2014</p><br /><br />
-                <p>Total funds:</p><br /><br />
-                <p>Spent:</p><br /><br />
-                <p>Remaining:</p>
-            </div>
-            
-            
+
         </div>
         
-        
-        <!--
-            output by month
-        -->
-        <div class="monthView">
-            <table class="monthTable">
-                <th>
-                <tr>
-                    <td class="underline">Date</td>
-                    <td class="underline">Spent</td>
-                    <td class="underline">Left</td>
-                </tr>
-                </th>
-                <tr>
-                    <td>Tuesday, 7/1</td>
-                    <td>$30</td>
-                    <td>$5</td>
-                </tr>
-                <tr>
-                    <td>Wednesday, 7/2</td>
-                    <td>$25</td>
-                    <td>$10</td>
-                </tr>
-                <tr>
-                    <td>Thursday, 7/3</td>
-                    <td>$18</td>
-                    <td>$17</td>
-                </tr>
-                <tr>
-                    <td>Friday, 7/4</td>
-                    <td>$5</td>
-                    <td>$30</td>
-                </tr>
-                <tr>
-                    <td>Saturday, 7/5</td>
-                    <td>$38</td>
-                    <td>-$3</td>
-                </tr>
-            </table>
-            
-            <div class="monthSummary">
-                <p>July, 2014</p><br /><br />
-                <p>Total funds:</p><br /><br />
-                <p>Spent:</p><br /><br />
-                <p>Remaining:</p>
-            </div>           
+        <div class="daySummary">
+            <p>Monday, July 7 2014</p><br />
+            <p>Daily funds:</p><br />
+            <p>Spent:</p><br />
+            <p>Remaining:</p>
         </div>
+        
+        <p class="underline transViewFooter">transaction history</p>
+        
     </div><!-- closing tag for .transactionView div -->
     
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
-        
+    <script type="text/javascript" src="js/global.js"></script>
+    <script type="text/javascript" src="js/sorttable.js"></script>
     </body>
 </html>

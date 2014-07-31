@@ -8,7 +8,8 @@
 #signup, #login {
     width: 20em;
     margin: 0 auto;
-    padding-top: 15em;
+    padding-top: 290px;
+    padding-right: 8px;
 }
 
 /*
@@ -16,4 +17,31 @@
 */
 #signupMessage {
     display: none;
+}
+
+.loginSignupWrap {
+    min-height: 713px;
+    min-width: 713px;
+    background-image: url(../img/bigPinkPigLogo.png);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.email, .password, .confirm, .submit {
+    //box-shadow: 1px 1px 1px black !important;
+    box-shadow: none !important;
+    border-style: inset !important;
+    //border-color: grey !important;
+    border-radius: 1px !important;
+}
+
+.submit {
+    height: 22px;
+    width: 125px;
+}
+
+.loginTop {
+    position: fixed;
+    width: 100%;
+    height: 4em;
 }

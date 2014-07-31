@@ -21,43 +21,19 @@ function SwitchToSignup(){
  * input field stuff
  */
 $('.email').on('focus', function(e){
-        EmailClear();
+    InputClear('email');
 }).on('blur', function(e){
-        EmailReset();
+    InputReset('email', 'e-mail');
 });
-
-function EmailClear(){
-    $('.email').attr('placeholder', '');
-}
-
-function EmailReset(){
-    $('.email').attr('placeholder', 'e-mail');
-}
 
 $('.password').on('focus', function(e){
-    PasswordClear();
+    InputClear('password');
 }).on('blur', function(e){
-    PasswordReset();
+    InputReset('password', 'password');
 });
-
-function PasswordClear(){
-    $('.password').attr('placeholder', '');
-}
-
-function PasswordReset(){
-    $('.password').attr('placeholder', 'password');
-}
 
 $('.confirm').on('focus', function(e){
-    ConfirmClear();
+    InputClear('confirm');
 }).on('blur', function(e){
-    ConfirmReset();
+    InputReset('confirm', 'confirm pw');
 });
-
-function ConfirmClear(){
-    $('.confirm').attr('placeholder', '');
-}
-
-function ConfirmReset(){
-    $('.confirm').attr('placeholder', 'confirm pw');
-}

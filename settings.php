@@ -82,22 +82,46 @@
         
         <br /><br />
         
-        <p class="underline">Modify Budget Items</p>
+        <p class="underline"><a href="javascript:lightbox(null, 'budgetManager.php');">Modify Budget Items</a></p>
         
         <br /><br />
+    </div>
+    
+    <div class="goalManagement">
+        <p>Savings Goal Management</p>
+        <table class="goalManagementTable">
+            <tr>
+                <td>Goal name:</td>
+                <td>_____________</td>
+            </tr>
+            <tr>
+                <td>Goal amount:</td>
+                <td>$____________</td>
+            </tr>
+            <tr>
+                <td>Target date:</td>
+                <td>_____________</td>
+            </tr>
+        </table>
+    <br /><br />
+    <p class="underline">Modify Goal</p>
+    <br /><br />
     </div>
     
     <div class="accountManagement">
         <p>Manage Account</p>
         <ul class="accountList">
-            <li>Change Password</li>
-            <li>Delete Account</li>
+            <li class="underline">Change Password</li>
+            <li class="underline">Delete Account</li>
         </ul>
         
         <br /><br />
     </div>
         
     <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/global.js"></script>
+    <script type="text/javascript" src="js/sorttable.js.js"></script>
+    <script type="text/javascript" src="js/settings.js.js.js"></script>
         
     </body>
 </html>

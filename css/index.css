@@ -12,35 +12,6 @@
 }
 
 /*
-    TRANSACTION VIEW SECTION (BOTTOM HALF) *************************************
-*/
-
-/*
-    div for entire section
-*/
-.transactionView {
-    margin-left: auto;
-    margin-right: auto;
-    width: 800px;
-    float: right;
-}
-
-/*
-    header line - day/month and range selector
-*/
-.transViewHeader {
-    padding-top: 1em;
-    padding-left: 3em;
-}
-
-/*
-    option list for days/months ranges
-*/
-.rangeSelector {
-    float: left;
-}
-
-/*
     spans for note/category
 */
 .category {
@@ -52,72 +23,40 @@
 }
 
 /*
-    selectors for days or months
+    TRANSACTION VIEW SECTION (BOTTOM HALF) *************************************
 */
-.dayMonth li {
-    float: left;
-    padding-left: 1em;
-}
-
-.dayMonth li p {
-    cursor: pointer;
-}
 
 /*
-    summary views *************************************************************
+    div for entire section
 */
-/*
-    day
-*/
-.dayView {
-    padding-left: 3em;
+.transactionView {
+    margin: 0 auto;
+    text-align: center;
 }
 
-.dayTable {
-    float: left;
-}
-
-.daySummary {
-    float: right;
-    padding-right: 3em;
-}
-
-.dayTable td {
-    padding: 5px;
-}
-
-/*
-    month
-*/
-.monthView {
-    display: none;
+.transViewFooter {
     clear: both;
+}
+
+/*
+    header line - day/month and range selector
+*/
+.transViewHeader {
+    padding-top: 1em;
     padding-left: 3em;
-}
-
-.monthTable {
-    float: left;
-}
-
-.monthTable td {
-    padding: 5px;
-}
-
-.monthSummary {
-    float: right;
-    padding-right: 3em;
 }
 
 /*
     goal tracker *************************************************************
 */
 .goalTrackerDiv {
-    float: left;
+    display: inline-block;
     width: 100px;
+    max-width: 100px;
     height: 418px;
+    max-height: 418px;
     text-align: center;
-    margin-left: 8px;
-    margin-top: 6px;
+    margin-right: 3em;
 }
 
 .goalCanvas {
@@ -133,4 +72,44 @@
 
 .goalFooter {
     margin-top: 2px;
+}
+
+/*
+    output view *************************************************************
+*/
+.dayView {
+    vertical-align: top;
+    display: inline-block;
+    margin-left: 3em;
+    margin-right: 3em;
+    overflow-y: scroll;
+    width: 400px;
+    max-width: 400px;
+    height: 418px;
+    max-height: 418px;
+}
+
+.dayTable {
+    float: left;
+}
+
+.dayTable td {
+    background: rgba(200,200,200,.7);
+    background-clip: content-box;
+    padding: 5px;
+}
+
+.dayTable th {
+    padding: 5px;
+}
+
+/*
+    Summary View
+*/
+.daySummary {
+    vertical-align: top;
+    display: inline-block;
+    width: 200px;
+    max-width: 200px;
+    text-align: left;
 }
