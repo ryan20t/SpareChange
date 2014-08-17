@@ -1,3 +1,4 @@
 add function comments to javascript and eventually PhP
 
-transaction history page - remove 'category' from note column, separate budget items into new view
+for DB.php: (and elsewhere)
+    utilize exceptions to throw feedback for errors

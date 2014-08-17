@@ -1,5 +1,9 @@
+<?php 
+    include 'dependency.php';
+    Util::checkLogout();
+    Util::confirmAccess();
+?>
 <!DOCTYPE html>
-<?php include 'dependency.php'; ?>
 <!--
 
 -->

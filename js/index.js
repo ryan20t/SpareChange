@@ -1,21 +1,4 @@
 /*
- * store DOM objects in variables
- */
-var day = document.querySelector('.dayView'),
-    month = document.querySelector('.monthView'),
-    daySelector = $('#daySelector'),
-    monthSelector = $('#monthSelector');
-    
-/*
- * initialize day
- */
-daySelector.addClass('underline');
-
-/*
- * click events and functions to switch ***************************************
- */
-
-/*
  * transaction type (budget or note)
  */
 $('#budgetBox').on('click', function(e){
@@ -38,30 +21,6 @@ function IsCategory(){
 }
 
 /*
- * day and month views
- */
-daySelector.on('click', function(e){
-    SwitchToDay();
-});
-monthSelector.on('click', function(e){
-    SwitchToMonth();
-});
-
-function SwitchToDay(){
-    day.style.display = 'block';
-    month.style.display = 'none';
-    $('#daySelector').addClass('underline');
-    $('#monthSelector').removeClass('underline');
-}
-
-function SwitchToMonth(){
-    day.style.display = 'none';
-    month.style.display = 'block';
-    $('#daySelector').removeClass('underline');
-    $('#monthSelector').addClass('underline');
-}
-
-/*
  * goal tracker canvas script
  * may need to move to the HTML page so PhP can be used
  */
@@ -75,7 +34,7 @@ ctx.fillStyle = gradient;
 ctx.fillRect(0,37.5,300,150);/*the second number gets bigger, it fills less (up to 150). use percentage and do math.*/
 
 /*
- * placeholder script
+ * placeholder scripts
  */
 $('.noteInput').on('focus', function(e){
     InputClear('noteInput');
@@ -86,5 +45,54 @@ $('.noteInput').on('focus', function(e){
 $('.amount').on('focus', function(e){
     InputClear('amount');
 }).on('blur', function(e){
-    InputReset('amount', '$');
+    InputReset('amount', 'amount');
+});
+
+/*
+ * Create datepicker
+ */
+$( '.date' ).datepicker({ 
+    dateFormat : "mm/dd/yy"});
+
+/*-------------------------------------------------------------------
+ *                   Numeric input only for amount                  *
+ -------------------------------------------------------------------*/ 
+$('.amount').on('input', function()
+{
+   $text = this.value;
+   $lastChar = $text.slice(-1);
+   $oldText = $text.replace($lastChar, "");
+   
+   /*
+    * Block input of second decimal place
+    */
+   var twoPeriods = false;
+   
+   if ( $oldText.indexOf(".") !== -1 && $lastChar === "." )
+   {
+       twoPeriods = true;
+   }
+   
+   /*
+    * Force only valid character entry
+    */
+   var regexDigitsDecimal = /[0-9|.]/; //valid characters
+   
+   if ( !regexDigitsDecimal.test($lastChar) || twoPeriods )
+   {
+       this.value = $text.substring(0, $text.length - 1);
+   }
+   
+   /*
+    * No more than two places after decimal
+    */
+   if ( this.value.indexOf(".") !== -1 )
+   {
+       $index = this.value.indexOf(".");
+       if ( this.value.length > $index + 3 )
+       {
+           this.value = this.value.substring(0, $index + 3);
+       }
+   }
+
 });

@@ -1,3 +1,8 @@
+/*
+ * 
+ * variables and functions to switch
+ * between log in and sign up forms
+ */
 var loginID = document.querySelector('#login'),
     signupID = document.querySelector('#signup'),
     loginClass = document.querySelector('#loginMessage'),
@@ -18,12 +23,18 @@ function SwitchToSignup(){
 }
 
 /*
- * input field stuff
+ * placeholder scripts
  */
 $('.email').on('focus', function(e){
     InputClear('email');
 }).on('blur', function(e){
     InputReset('email', 'e-mail');
+});
+
+$('.confirmEmail').on('focus', function(e){
+    InputClear('confirmEmail');
+}).on('blur', function(e){
+    InputReset('confirmEmail', 'confirm e-mail');
 });
 
 $('.password').on('focus', function(e){

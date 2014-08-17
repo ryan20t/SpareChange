@@ -6,9 +6,22 @@
 */
 .transactionEntry {
     padding-top: 8em;
+    //margin-top: 8em;
     height: 5em;
     border-bottom: 1px solid black;
     text-align: center;
+}
+
+.date {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
+
+.dollarSign {
+    position: relative;
+    left: 22px;
+    top: 1px;
+    color: Gray;
 }
 
 /*
@@ -32,10 +45,8 @@
 .transactionView {
     margin: 0 auto;
     text-align: center;
-}
-
-.transViewFooter {
-    clear: both;
+    overflow-x: hidden;
+    min-width: 852px;
 }
 
 /*
@@ -50,6 +61,7 @@
     goal tracker *************************************************************
 */
 .goalTrackerDiv {
+    position: static;
     display: inline-block;
     width: 100px;
     max-width: 100px;
@@ -78,6 +90,7 @@
     output view *************************************************************
 */
 .dayView {
+    position: static;
     vertical-align: top;
     display: inline-block;
     margin-left: 3em;

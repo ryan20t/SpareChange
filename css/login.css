@@ -27,11 +27,9 @@
     background-repeat: no-repeat;
 }
 
-.email, .password, .confirm, .submit {
-    //box-shadow: 1px 1px 1px black !important;
+.email, .password, .confirm, .submit, .confirmEmail {
     box-shadow: none !important;
     border-style: inset !important;
-    //border-color: grey !important;
     border-radius: 1px !important;
 }
 

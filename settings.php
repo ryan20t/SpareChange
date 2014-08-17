@@ -1,5 +1,9 @@
+<?php 
+    include 'dependency.php';
+    Util::checkLogout();
+    Util::confirmAccess();
+?>
 <!DOCTYPE html>
-<?php include 'dependency.php'; ?>
 <!--
 
 -->
@@ -18,15 +22,15 @@
         ?>
         
         <center class="top">
-            <p class="navItemLeft">Spare Change</p>
+            <img class="logoLeft" src="img/smpink.png" alt="" />
             <ul class="navList">
-                <li>Hello, (username)</li>
+                <li><a href="index.php">dashboard</a></li>
                 <li>|</li>
-                <li><a href="index.php">Dashboard</a></li>
+                <li><a href="transHistory.php">transactions</a></li>
                 <li>|</li>
-                <li class="underline">Settings</li>
+                <li class="underline">settings</li>
                 <li>|</li>
-                <li><p>Sign out</p></li>
+                <li><p><a href="?logout=1">sign out</a></p></li>
             </ul>
         </center>
         
