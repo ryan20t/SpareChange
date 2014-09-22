@@ -15,7 +15,7 @@ class isValid {
      */
     public static function notEmpty($value)
     {
-        if ( $value )
+        if ( !empty($value) )
         {
             return true;
         }
@@ -117,4 +117,34 @@ class isValid {
             return false;
         }
     }
+    
+    /**
+     * validates bill/income frequency (occurrences per year)
+     * 
+     * @param int $freq
+     * 
+     * @return boolean
+     */
+    public static function isValidFrequency($freq)
+    {
+        switch ($freq)
+        {
+            case 1:
+                return true;
+            
+            case 12:
+                return true;
+                
+            case 52: 
+                return true;
+                
+            case 365:
+                return true;
+                
+            default:
+                return false;
+        }
+    }
+    
+    
 }//end class

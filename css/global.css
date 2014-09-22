@@ -23,12 +23,14 @@ body {
     padding: 1em;
 }
 
-input[type=text], input[type=password], input[type=submit] {
+input[type=text], input[type=password], input[type=submit], select, checkbox {
     border: 3px solid rgba(143, 188, 143, .8);
     border-radius: 5px;
     text-align: center;
     box-shadow: 1px 1px 5px black;
     margin: 5px;
+    min-width: 150px;
+    max-width: 150px;
 }
 
 select {
@@ -53,10 +55,7 @@ input[type=submit] {
     background: -moz-linear-gradient(right, rgba(143,188,143,1) , white, rgba(143,188,143,.5)); // For Firefox 3.6 to 15
     background: linear-gradient(to right,  rgba(143,188,143,1) , white, rgba(143,188,143,.5) ); // Standard syntax
     border-bottom: 1px solid darkseagreen;
-    position: fixed;
     height: 4em;
-    clear: both;
-    //top: 0;
 }
 
 .navItemRight {

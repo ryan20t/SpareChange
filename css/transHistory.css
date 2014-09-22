@@ -2,12 +2,13 @@
     Author     : ryan
 */
 .contentWrap {
-    border: 1px solid black;
+    //border: 1px solid black;
+    position: relative;
     min-width: 852px;
     max-width: 852px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 4em;
+    margin-top: 0em;
 }
 
 .historyHeader {
@@ -39,4 +40,9 @@ select {
 .historyTable th {
     text-align: left;
     border-bottom: 1px solid black;
+}
+
+.multiDelete {
+    position: absolute;
+    right: 0;
 }

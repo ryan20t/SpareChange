@@ -1,0 +1,48 @@
+/* 
+    Created on : Aug 31, 2014, 8:00:57 PM
+    Author     : ryan
+*/
+html {
+    
+}
+
+.incomeDiv {
+    
+}
+
+.incomeHeader {
+    position: relative;
+    top: 100px;
+    left: 50px;
+}
+
+.amount {
+    position: relative;
+    top: 100px;
+    left: 50px;
+}
+
+.frequency {
+    position: relative;
+    left: 62px;
+    top: 100px;
+}
+
+.submit {
+    position: relative;
+    left: 62px;
+    top: 100px;
+}
+
+.dollarSign {
+    top: 101px;
+    left: 72px;
+}
+
+.errorMessage {
+    display: inline;
+    color: red;
+    top: 13em;
+    left: 8em;
+    position: relative;
+}

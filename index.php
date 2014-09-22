@@ -27,6 +27,7 @@
         <?php
         $crud = new CRUD(); //used to interact with DB throughout the page
 
+        //INSERT NEW TRANSACTION
         if ( Util::isPostRequest() && isset($_POST['submit']) )
         { 
             //type variable used to null category or note field on TransactionModel map
@@ -66,11 +67,25 @@
                 if ( $success )
                 {
                     echo "success";
+                    header("Location: index.php");
                 }
                 else 
                 {
                     echo "fail";
                 }
+            }
+        }
+        
+        //CHECK FOR TRANSACTION TO DELETE
+        if ( isset($_POST['tid']) && Util::isPostRequest() )
+        {
+            $tid = filter_input(INPUT_POST, 'tid');
+            $successfulDelete = $crud->deleteTransaction($tid);
+            
+            if ( $successfulDelete )
+            {
+                unset($_POST['tid']);
+                header("Location: index.php");
             }
         }
         
@@ -126,7 +141,7 @@
                 ?>
                 
                 <div class="note">
-                    <input class="noteInput" type="text" name="note" id="note" placeholder="note" maxlength="50"/>
+                    <input class="noteInput" type="text" name="note" id="note" placeholder="note" maxlength="25"/>
                 </div>
                 
                 &nbsp;&nbsp;&nbsp;
@@ -145,45 +160,120 @@
         or month
     -->
     
+    <?php 
+        
+        //calculate daily limit/spending etc
+        $bills = $crud->getBills();    //bills array (bill_name, amount, frequency) from DB
+        $billsDailyTotal = 0;          //total of bills after conversion to daily amount
+
+        //change bill amounts to daily occurrence values
+        if ( $bills )
+        {
+            foreach ( $bills as $key => $values)
+            {
+                $bills[$key]['amount'] = Util::toDesiredFrequency($values['amount'], $values['frequency'], 365);
+                $billsDailyTotal += $bills[$key]['amount'];
+            }
+        }
+
+        //get income info
+        $income = $crud->getIncome();   //income array (amount, frequency)
+        $dailyIncome = Util::toDesiredFrequency($income['amount'], $income['frequency'], 365);
+
+        //get transactions
+        $today = $crud->getToday();  //array of today's transactions
+        $dailyTransactionTotal = 0;  //will store transaction total
+    
+    ?>    
+    
     <div class="transactionView">
         <div class="transViewHeader">
             <!--(current date, ex: Monday, July 7 2014)-->
-            <?php echo date("l\, F jS");; ?>
+            <?php echo strtolower(date("l\, F jS")); ?>
         </div>
         <br />
         
-        <div class="goalTrackerDiv">
-            <p class="goalHeader">(goal name)</p>  
-            <canvas class="goalCanvas"></canvas>
-            <p class="goalFooter">75%</p>
-        </div>
-    
+        <!-- goal tracker -->
+        <?php
+        
+        $goal = $crud->getGoal();
+        $runningTotal = $crud->getGoalTotal();
+        $percent = Util::getPercent($goal['amount'], $runningTotal);
+
+        if ( null !== $goal )
+        {
+            echo '<div class="goalTrackerDiv"><p class="goalHeader">',$goal['goal_name'],': $',$goal['amount']; //goal div and header
+            echo '</p>','<canvas class="goalCanvas"></canvas>'; //goal canvas
+            echo '<p class="goalFooter">$',$runningTotal,'<br />',$percent,'%','</p>'; //goal footer
+            echo '<button class="goalButton" id="goalButton" onclick="location.href=\'goal.php\'">contribute</button>';
+            echo '</div>'; //end of goal div
+        }
+        else
+        {
+            echo '<div class="goalTrackerDiv"><p class="goalHeader">no goal</p>';
+            echo '<p class="goalFooter"><button class="goalButton" id="goalButton" onclick="location.href=\'goal.php\'">add goal</button></p></div>';
+        }
+        
+        ?>
+        
         <!--
             output by day
         
-        <br />-->
+        -->
         <div class="dayView">
         <table class="dayTable">
-            <tr>
-                <th class="underline">amount</th>
-                <th class="underline">note</th>
-            </tr>
+            
+            <?php if (!$today) { echo '<p class="noMoneySpent">you have not spent any money today</p>'; } ?>
+            
+            <?php
+            if ($today)
+            {
+            echo '<tr><th class="underline">amount</th><th class="underline">note</th></tr>';
+            }
+            ?>
+            
+            <!-- Output Today's Transactions -->
             <?php 
-                $today = $crud->getToday();
-                //print_r($today);
-                foreach( $today as $today )
+            
+                //output and total daily transactions
+                if ( $today ) //today is an array of today's transactions
                 {
-                    echo '<tr><td>'.$today['amount'].'</td><td>'.$today['note'].'</td></tr>';
+                    foreach( $today as $today )
+                    {
+                        echo '<tr><td>'.$today['amount'],'</td><td>'.$today['note'],'</td><td><form name="deleteForm" action="#" method="post"><input name="tid" type="hidden" value="',$today['trans_id'],'" /><button type="submit" onclick="return confirm(\'delete transaction?\');">X</button></form></td></tr>';
+                        $dailyTransactionTotal += $today['amount'];
+                    }
                 }
+                
+                
+                //calculate daily spending limit and remaining funds after daily transactions
+                $dailySpendingLimit = $dailyIncome - $billsDailyTotal;
+                $remaining = round($dailySpendingLimit - $dailyTransactionTotal, 2);
+                
             ?>
         </table>
         </div>
         
         <!-- Summary -->
         <div class="daySummary">
-            <p>Daily funds:</p><br />
-            <p>Spent:</p><br />
-            <p>Remaining:</p>
+            <div class="summarySquare">
+                <p class="dSign">$</p>
+                <div class="summaryInfo"><?php echo $dailySpendingLimit ?></div>
+                <p>daily funds</p>
+            </div>
+            <br />
+            <div class="summarySquare">
+                <p class="dSign">$</p>
+                <div class="summaryInfo"><?php echo $dailyTransactionTotal ?></div>
+                <p>spent</p>
+            </div>
+            <br />
+            <div class="summarySquare">
+                <p class="dSign">$</p>
+                <div class="summaryInfo"><?php echo $remaining ?></div>
+                <p>remaining</p>
+            </div>
+            <br />
         </div>
         
     </div><!-- closing tag for .transactionView div -->
@@ -191,7 +281,32 @@
     <!-- JavaScript -->
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/global.js"></script>
-    <script type="text/javascript" src="js/sorttable.js"></script>
-
+    
+    <?php
+        $fillPercent = ( 100 - $percent ) / 100;
+        $fillNumber = $fillPercent * 150;
+        
+        if ($fillNumber < 0)
+        {
+            $fillNumber = 0;
+        }
+        
+        echo '<script type="text/javascript">ctx.fillRect(0,',$fillNumber,',300,150);</script>';
+    ?>
+    
+    <!-- check which type was set -->
+    <?php
+    
+        if ( isset($_POST['budgetBox']) && $_POST['budgetBox'] === "category" )
+        {
+            echo '<script>IsCategory();</script>';
+        }
+        else
+        {
+            echo '<script>IsNote();</script>';
+        }
+    
+    ?>
+    
     </body>
 </html>

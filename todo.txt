@@ -1,4 +1,0 @@
-add function comments to javascript and eventually PhP
-
-for DB.php: (and elsewhere)
-    utilize exceptions to throw feedback for errors

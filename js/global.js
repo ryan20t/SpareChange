@@ -14,6 +14,50 @@ function InputReset(x, y){
     $('.' + x).attr('placeholder', y);
 }
 
+/*-------------------------------------------------------------------
+ *                   Numeric input only for amount                  *
+ -------------------------------------------------------------------*/ 
+$('.amount').on('input', function()
+{
+   $text = this.value;
+   $lastChar = $text.slice(-1);
+   $oldText = $text.replace($lastChar, "");
+   
+   /*
+    * Block input of second decimal place
+    */
+   var twoPeriods = false;
+   
+   if ( $oldText.indexOf(".") !== -1 && $lastChar === "." )
+   {
+       twoPeriods = true;
+   }
+   
+   /*
+    * Force only valid character entry
+    */
+   var regexDigitsDecimal = /[0-9|.]/; //valid characters
+   
+   if ( !regexDigitsDecimal.test($lastChar) || twoPeriods )
+   {
+       this.value = $text.substring(0, $text.length - 1);
+   }
+   
+   /*
+    * No more than two places after decimal
+    */
+   if ( this.value.indexOf(".") !== -1 )
+   {
+       $index = this.value.indexOf(".");
+       if ( this.value.length > $index + 3 )
+       {
+           this.value = this.value.substring(0, $index + 3);
+       }
+   }
+
+});
+
+
 /*
  * lightbox
  */

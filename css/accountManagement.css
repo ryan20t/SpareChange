@@ -1,0 +1,26 @@
+/* 
+    Created on : Sep 2, 2014, 1:19:25 PM
+    Author     : ryan
+*/
+.amTitle {
+    margin-top: 3em;
+    margin-left: 3em;
+}
+
+.pwChange {
+    margin-top: 2em;
+    margin-left: 3em;
+    min-width: 400px;
+    max-width: 400px;
+}
+
+.deleteAccount {
+    margin-top: 3em;
+    margin-left: 3em;
+    min-width: 400px;
+    max-width: 400px;
+}
+
+#backButton {
+    margin-left: 3em;
+}

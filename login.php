@@ -15,6 +15,7 @@
         <?php
         
         $signupLogin = new SignupLogin();
+        $elog = new ErrorLog(); //instance of ErrorLog to pull errors
         
         /*
          * determine user action:
@@ -28,10 +29,7 @@
             $password = filter_input(INPUT_POST, 'password');
             $confirmPassword = filter_input(INPUT_POST, 'confirmPw');
 
-            if ( IsValid::emailIsValid($email) 
-                 && IsValid::compare($email, $confirmEmail)
-                 && IsValid::passwordIsValid($password) 
-                 && IsValid::compare($password, $confirmPassword)  )
+            if ( $elog->signupValid() )
             {
                 $date = date("Y-m-d"); //to insert as sign up date
                 $id = $signupLogin->saveSignup($email, $password, $date);
@@ -41,18 +39,32 @@
                     header("Location: index.php");
                 }
             }
+            else
+            {
+                $errors = $elog->getErrors();
+            }
+            
         }
         else if ( isset($_POST['Login']) )
-        {
+        {   
+            
             $email = filter_input(INPUT_POST, 'email');
             $password = filter_input(INPUT_POST, 'password');
-
-            if ( $signupLogin->loginIsCorrect($email, $password) )
-            {
-                header("Location: index.php");
+            
+            if ( $elog->loginValid() ) //valid login
+            { 
+                if ( $signupLogin->loginIsCorrect($email, $password) )
+                {
+                    header("Location: index.php");
+                }
             }
+            else //invalid login
+            {
+                $errors = $elog->getErrors();
+            }
+              
         }
-
+        
         ?>
         <!--
             header bar
@@ -70,10 +82,18 @@
         -->
         <fieldset id="signup" class="fieldset">
             <form name="signupForm" action="#" method="post">
-                <input type="text" class="email" name="email" placeholder="e-mail" value="<?php echo $email ?>" /><br />
-                <input type="text" class="confirmEmail" name="confirmEmail" placeholder="confirm e-mail" /><br />
-                <input type="password" class="password" name="password" placeholder="password" /><br />
-                <input type="password" class="confirm" name="confirmPw" placeholder="confirm pw" /><br />
+                <input type="text" class="email" name="email" placeholder="e-mail" value="<?php echo $email; ?>" />
+                <?php if ( isset($_POST['Signup']) && $errors['email'] ) {echo '<br />',$errors['email'];} ?><br />
+                
+                <input type="text" class="confirmEmail" name="confirmEmail" placeholder="confirm e-mail" value="<?php echo $confirmEmail; ?>" />
+                <?php if ( isset($_POST['Signup']) && $errors['confirmEmail'] && !$errors['email'] ) {echo '<br />',$errors['confirmEmail'];} ?><br />
+                
+                <input type="password" class="password" name="password" placeholder="password" />
+                <?php if ( isset($_POST['Signup']) && $errors['password'] ) {echo '<br />',$errors['password'];} ?><br />
+                
+                <input type="password" class="confirm" name="confirmPw" placeholder="confirm pw" />
+                <?php if ( isset($_POST['Signup']) && $errors['confirmPw'] && !$errors['password'] ) {echo '<br />',$errors['confirmPw'];} ?><br />
+                
                 <input type="submit" class="submit" name="Signup" value="Signup" />
             </form>
         </fieldset>
@@ -83,13 +103,18 @@
         -->
         <fieldset id="login" class="fieldset">
             <form name="loginForm" action="#" method="post">
-                <input type="text" class="email" name="email" placeholder="e-mail" value="<?php echo $email ?>" /><br />
-                <input type="password" class="password" name="password" placeholder="password" /><br />
+                <input type="text" class="email" name="email" placeholder="e-mail" value="<?php echo $email; ?>" />
+                <?php if ( isset($_POST['Login']) && $errors['email'] ) {echo '<br />',$errors['email'];} ?><br />  
+                
+                <input type="password" class="password" name="password" placeholder="password" />
+                <?php if ( isset($_POST['Login']) && $errors['password'] ) {echo '<br />',$errors['password'];} ?><br />
+                
                 <input type="submit" class="submit" name="Login" value="Login" />
             </form>
         </fieldset>
             
         </div><!-- loginSignupWrap -->
+        
     
         <!-- Script, etc -->        
         <script type="text/javascript" src="js/jquery.js"></script>

@@ -76,3 +76,501 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Duplicate entry 'hello@hello.com' for key 'email'
+Duplicate entry 'mi@mi.com' for key 'email'
+
+
+
+
+
+
+
+
+
+
+Incorrect number of arguments for PROCEDURE sparechange.sp_signup; expected 4, got 3
+Incorrect number of arguments for PROCEDURE sparechange.sp_signup; expected 4, got 3
+Incorrect number of arguments for PROCEDURE sparechange.sp_signup; expected 4, got 3
+
+Incorrect number of arguments for PROCEDURE sparechange.sp_signup; expected 4, got 3
+Incorrect number of arguments for PROCEDURE sparechange.sp_signup; expected 4, got 3
+Incorrect number of arguments for PROCEDURE sparechange.sp_signup; expected 4, got 3
+Incorrect number of arguments for PROCEDURE sparechange.sp_signup; expected 4, got 3
+
+
+
+
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Incorrect number of arguments for PROCEDURE sparechange.sp_signup; expected 4, got 3
+OUT or INOUT argument 4 for routine sparechange.sp_signup is not a variable or NEW pseudo-variable in BEFORE trigger
+OUT or INOUT argument 4 for routine sparechange.sp_signup is not a variable or NEW pseudo-variable in BEFORE trigger
+OUT or INOUT argument 4 for routine sparechange.sp_signup is not a variable or NEW pseudo-variable in BEFORE trigger
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Duplicate entry '11' for key 'PRIMARY'
+Incorrect decimal value: '' for column 'amount' at row 1
+Duplicate entry '11' for key 'PRIMARY'
+Duplicate entry '11' for key 'PRIMARY'
+Duplicate entry '11' for key 'PRIMARY'
+
+
+
+
+
+
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+
+Incorrect decimal value: '' for column 'amount' at row 1
+
+
+
+Incorrect decimal value: '' for column 'amount' at row 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Incorrect decimal value: '' for column 'amount' at row 1
+
+Incorrect decimal value: '' for column 'amount' at row 1
+Duplicate entry '11' for key 'PRIMARY'
+Incorrect decimal value: '' for column 'amount' at row 1
+Duplicate entry '11' for key 'PRIMARY'
+Duplicate entry '11' for key 'PRIMARY'
+Incorrect decimal value: '' for column 'amount' at row 1
+Duplicate entry '11' for key 'PRIMARY'
+Duplicate entry '11' for key 'PRIMARY'
+Duplicate entry '11' for key 'PRIMARY'
+Duplicate entry '11' for key 'PRIMARY'
+Incorrect decimal value: '' for column 'amount' at row 1
+Duplicate entry '11' for key 'PRIMARY'
+Duplicate entry '11' for key 'PRIMARY'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect date value: '09/15/2014' for column 'thedate' at row 1
+Incorrect date value: '09/15/2014' for column 'thedate' at row 1
+Incorrect date value: '09/15/2014' for column 'thedate' at row 1
+Incorrect date value: '09/15/2014' for column 'thedate' at row 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+
+Incorrect decimal value: '' for column 'amount' at row 1
+
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+
+
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+Incorrect decimal value: '' for column 'amount' at row 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

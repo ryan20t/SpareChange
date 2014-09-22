@@ -91,4 +91,78 @@ class Util {
         return $displayDate;
     }
     
+    /**
+     * takes in an amount and it's frequency (occurrences per year) and returns
+     * the amount at the desired frequency
+     * 
+     * @param decimal $amount original amount
+     * @param int $freq original frequency
+     * @param int $toFreq desired frequency (365 = daily, 52 = weekly, 12 = monthly, 1 = annually)
+     * 
+     * @return decimal
+     */
+    public static function toDesiredFrequency($amount, $freq, $toFreq)
+    {
+        return round( ( $amount * $freq ) / $toFreq, 2 );
+    }
+    
+    /**
+     * takes in an integer value, occurrences per year of a payment, and return
+     * a literal description of frequency
+     * 
+     * @param int $freqInt
+     * 
+     * @return string $freqStr
+     */
+    public static function displayFrequency($freqInt)
+    {
+        $freqStr = "";
+        
+        switch ($freqInt)
+        {
+            case 365:
+                $freqStr = "daily";
+                break;
+            
+            case 52:
+                $freqStr = "weekly";
+                break;
+                
+            case 12:
+                $freqStr = "monthly";
+                break;
+                
+            case 1:
+                $freqStr = "annually";
+                break;
+            
+            default:
+                $freqStr = "error: unknown frequency";
+                break;
+       }
+        return $freqStr;
+    }
+    
+    /**
+     * get percentage
+     * 
+     * @param decimal $total
+     * @param decimal $runningTotal
+     * 
+     * @return decimal $percent
+     */
+    public static function getPercent($total, $runningTotal)
+    {
+        try
+        {
+            $percent = round(100 * ($runningTotal / $total), 1);
+            return $percent;
+        }
+        catch (Exception $ex)
+        {
+            $percent = 0;
+            return $percent;
+        }
+    }
+    
 }//end class

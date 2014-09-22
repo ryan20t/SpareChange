@@ -90,5 +90,104 @@ class SignupLogin extends DB {
         }
     }
     
+    /**
+     * validates old password before changing to new one
+     * 
+     * @param string $oldPW
+     * 
+     * @return boolean
+     */
+    public function passwordChangeCorrect($oldPW)
+    {
+        $id = $_SESSION['id'];
+        $selectedPW = null;
+        
+        if ( null !== $this->getDB() )
+        {
+            $dbPrep = $this->getDB()->prepare('select password from users where user_id = :id');
+            
+            $dbPrep->bindParam(':id', $id, PDO::PARAM_INT);
+        }
+        
+        if ( $dbPrep->execute() && $dbPrep->rowCount() > 0 )
+        {
+            $selectedPW = $dbPrep->fetch(PDO::FETCH_COLUMN);
+        }
+        else
+        {
+            $error = $dbPrep->errorInfo();
+            error_log("\n".$error[2], 3, "logs/errors.log");
+        }
+        
+        if ( $selectedPW === sha1($oldPW) )
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    /**
+     * updates password in DB
+     * 
+     * @param string $newPW
+     * 
+     * @return boolean
+     */
+    public function changePW($newPW)
+    {
+        $id = $_SESSION['id'];
+        $pw = sha1($newPW);
+        
+        if ( null !== $this->getDB() )
+        {
+            $dbPrep = $this->getDB()->prepare('update users set password = :pw where user_id = :id');
+            
+            $dbPrep->bindParam(':pw', $pw, PDO::PARAM_STR);
+            $dbPrep->bindParam(':id', $id, PDO::PARAM_INT);
+            
+            if ( $dbPrep->execute() && $dbPrep->rowCount() > 0 )
+            {
+                return true;
+            }
+            else
+            {
+                $error = $dbPrep->errorInfo();
+                error_log("\n".$error[2], 3, "logs/errors.log");
+                return false;
+            }
+        }
+    }
+    
+    /**
+     * deletes account completely
+     * 
+     * @return boolean
+     */
+    public function deleteAccount()
+    {
+        $id = $_SESSION['id'];
+        
+        if ( null !== $this->getDB() )
+        {
+            $dbPrep = $this->getDB()->prepare('delete from users where user_id = :id');  
+            
+            $dbPrep->bindParam(':id', $id, PDO::PARAM_INT);
+        }
+        
+        if ( $dbPrep->execute() && $dbPrep->rowCount() > 0 )
+        {
+            unset($_SESSION['id']);
+            return true;
+        }
+        else
+        {
+            $error = $dbPrep->errorInfo();
+            error_log("\n".$error[2], 3, "logs/errors.log");
+            return false;
+        }
+    }
     
 }//end class
