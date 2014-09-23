@@ -126,6 +126,37 @@ class CRUD extends DB {
     }//end getCategories()
     
     /**
+     * pull list of budget categories from DB
+     * 
+     * @return array
+     */
+    public function getCategories2()
+    {
+        $categories = array();
+        $id = $_SESSION['id'];
+        
+        if ( null !== $this->getDB() )
+        {
+            $dbPrep = $this->getDB()->prepare('select bill_name, amount from bills where user_id = :id and bill_type = "budget"');
+            
+            $dbPrep->bindParam(':id', $id, PDO::PARAM_INT);
+            
+            if ( $dbPrep->execute() && $dbPrep->rowCount() > 0 )
+            {
+                $categories = $dbPrep->fetchAll(PDO::FETCH_ASSOC);
+                return $categories;
+            }
+            else
+            {
+                $categories[0] = 0;
+                $error = $dbPrep->errorInfo();
+                error_log("\n".$error[2], 3, "logs/errors.log");
+                return $categories;
+            }
+        }
+    }//end getCategories2()
+    
+    /**
      * Get today's non-budget transactions for display on main page
      * 
      * @return array
@@ -536,4 +567,37 @@ class CRUD extends DB {
         
         return $transactions;
     }
+    
+    /**
+     * get budget transactions
+     * 
+     * @param string $item
+     * 
+     * @return array $transactions
+     */
+    public function getBudgetTransactions($item)
+    {
+        $id = $_SESSION['id'];
+        $transactions = array();
+        
+        if (null !== $this->getDB())
+        {
+            $dbPrep = $this->getDB()->prepare('select year(thedate) as year, monthname(thedate) as month, month(thedate) as monthID, sum(amount) as amount from transactions where user_id = :id and category = :item group by year, month order by year desc, monthID desc');
+            
+            $dbPrep->bindParam(':id', $id, PDO::PARAM_INT);
+            $dbPrep->bindParam(':item', $item, PDO::PARAM_STR);
+        }
+        
+        if ( $dbPrep->execute() && $dbPrep->rowCount() > 0 )
+        {
+            $transactions = $dbPrep->fetchall(PDO::FETCH_ASSOC);
+        }
+        else
+        {
+            $error = $dbPrep->errorInfo();
+            error_log("\n".$error[2], 3, "logs/errors.log");
+        }
+        return $transactions;
+    }
+    
 }

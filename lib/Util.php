@@ -153,6 +153,10 @@ class Util {
      */
     public static function getPercent($total, $runningTotal)
     {
+        if ($total == 0)
+        {
+            return 0;
+        }
         try
         {
             $percent = round(100 * ($runningTotal / $total), 1);

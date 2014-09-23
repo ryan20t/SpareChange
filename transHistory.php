@@ -152,7 +152,7 @@
                 $transactions = $crud->getTransactions($theDate, $nextDate);
             }            
             ?>
-        
+        <div class="tableDiv">
         <form name="tableForm" action="#" method="post">
             
             <?php
@@ -184,13 +184,51 @@
                 echo '</tr>';
             }
             echo '</table></div>';
+            
+            echo '</div>';
+            
             echo '<input type="submit" name="delete" value="delete" class="multiDelete" onclick="return confirm(\'delete transactions?\');" />';
         ?>
             
         </form>
             
+    <!--</div>-->
+
+        <br /><br /><br /><br />
+    
+    <p class="underline">budget summary</p><br />
+    
+    <?php
+    
+        $cats = $crud->getCategories2();
+        //$thing = $crud->getBudgetTransactions("gas");print_r($thing);
+        
+//        echo '<table class="budgetSummary"><tr><th>year</th><th>month</th><th>amount</th></tr>';
+        echo '<table class="budgetSummary">';
+//        foreach ($cats as $value)
+        foreach ($cats as $key => $value)
+        {
+//            $budgetSummary = $crud->getBudgetTransactions($value);
+            $budgetSummary = $crud->getBudgetTransactions($cats[$key]['bill_name']);
+            
+//            echo '<tr><td colspan="3">',$value,'</td></tr>';
+            echo '<tr><td>',$cats[$key]['bill_name'],'</td><td colspan="2">budget: $',$cats[$key]['amount'],'</td></tr>';
+            
+            foreach ($budgetSummary as $key => $value)
+            {
+                echo '<tr>';
+                echo '<td>',$budgetSummary[$key]['year'],'</td>';
+                echo '<td>',$budgetSummary[$key]['month'],'</td>';
+                echo '<td>$',$budgetSummary[$key]['amount'],'</td>';
+                echo '</tr>';
+            }echo '<tr><td> </td><td> </td><td> </td></tr>';
+        }
+        echo '</table>';
+    ?>
+
     </div>
 
+    <br /><br /><br /><br />
 
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/global.js"></script>

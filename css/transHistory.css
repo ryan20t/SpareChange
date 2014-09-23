@@ -46,3 +46,12 @@ select {
     position: absolute;
     right: 0;
 }
+
+.budgetSummary td {
+    padding: 5px;
+}
+
+.tableDiv {
+    max-height: 600px;
+    overflow-y: auto;
+}

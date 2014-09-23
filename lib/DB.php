@@ -21,7 +21,7 @@ class DB {
         try
         {
             $this->db = new PDO("mysql:host=localhost;port=3306;dbname=sparechange", "sparechange", "sparechange");
-            //$this->db = new PDO("mysql:host=mysql5.000webhost.com;port=3306;dbname=a5957278_sparech", "a5957278_sparech", "sparechange9019");
+            //$this->db = new PDO("mysql:host=mysql5.000webhost.com;port=3306;dbname=a5957278_sparech", "a5957278_sparech", "sparech9019");
         }        
         catch (Exception $ex)
         {

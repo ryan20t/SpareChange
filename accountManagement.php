@@ -23,6 +23,7 @@
         $signup = new SignupLogin();
         $elog = new ErrorLog();
         $invalidPW = false;
+        $pwChanged = false;
         
         //change password
         if ( Util::isPostRequest() && isset($_POST['submitPW']) )
@@ -38,14 +39,16 @@
                     if ( $signup->changePW($newPW) ) //perform update
                     {
                         echo "success";
+                        $pwChanged = true;
                     }
                     else
                     {
                         echo "failed";
+                        $pwChanged = false;
                     }
                 }
             }
-            if ( !$signup->passwordChangeCorrect($oldPW) )
+            if ( !$signup->passwordChangeCorrect($oldPW) && !$pwChanged )
             {
                 $invalidPW = true;
             }

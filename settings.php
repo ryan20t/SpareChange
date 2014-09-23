@@ -141,9 +141,9 @@
         </div>
         
         <div class="buttonWrap">
-            <div class="managementButton" onClick="location.href='incomeManager.php'">modify income</div>
-            <div class="managementButton" onclick="location.href='goal.php'">add/modify saving goal</div>
-            <div class="managementButton" onClick="location.href='accountManagement.php'">account management</div>
+            <div class="managementButton" onClick="location.href='incomeManager.php'"><p>modify income</p></div>
+            <div class="managementButton" onclick="location.href='goal.php'"><p>add/modify saving goal</p></div>
+            <div class="managementButton" onClick="location.href='accountManagement.php'"><p>account management</p></div>
         </div>
             
         <div class="settingsPanel savings">
